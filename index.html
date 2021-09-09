@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  * {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 74px;
+    text-align: center;
+    text-shadow: 2px 2px rgba(39, 36, 28, 0.733);
+  }
+  html {
+    background: url(molen.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+    text-align: center;
+  }
+  #content {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+  }
+  #Day, #Month {
+    font-family: 'Special Elite', sans-serif;
+  }
+  #Month {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 60px;
+  }
+
+  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet"> 
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var d = today.getDay();
+    var nd = today.getDate();
+    var month = today.getMonth();
+
+       
+    var maand = "";
+    const maanden = ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"];
+    var maand = maanden[month];
+
+    {{/*  var nummerword = "";  */}}
+    const nummerworden = ["eerste", "tweede", "derde", "vierde", "vijfde", "zesde", "zevende", "achtste", "negende", "tiende", "elfde", "twaalfde", "dertiende", "veertiende", "vijftiende", "zestiende", "zeventiende", "achttiende", "negentiende", "twintigste", "eenentwintigste", "tweeëntwintigste", "drieentwintigste", "vierentwintigste", "vijfentwintigste", "zesentwintigste", "zevenentwintigste", "achtentwintigste", "negenentwintigste", "dertigste", "eenendertigste"];
+    let nummerword = nummerworden[nd-1];
+
+    var dag = "";
+    var weekdag = new Array(7);
+    weekdag[0] = "Zondag";
+    weekdag[1] = "Maandag";
+    weekdag[2] = "Dinsdag";
+    weekdag[3] = "Woensdag";
+    weekdag[4] = "Donderdag";
+    weekdag[5] = "Vrijdag";
+    weekdag[6] = "Zaterdag";
+    var dag = weekdag[d];
+    
+    
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('Day').innerHTML = dag.toUpperCase();
+    document.getElementById('Clock').innerHTML = h + ":" + m + ":" + s;
+    document.getElementById('Month').innerHTML = maand.toUpperCase()  + "<br>" + nummerword.toString().toUpperCase();
+    
+    var t = setTimeout(startTime, 500);
+
+}
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+<div class="" id="content">
+  <div id="Clock"></div>
+  <div id="Day"></div>
+  <div id="Month"></div>
+</div>
+</body>
+</html>
